@@ -14,14 +14,15 @@ Feature: Add interface to Cloze question type syntax
         | teacher | C1     | editingteacher |
     Given the following "user preferences" exist:
         | user    | preference | value |
-        | teacher | htmleditor | atto  |
+        | teacher | htmleditor | tiny  |
 
   @javascript
-  Scenario: Create, a Cloze question
-
-    Scenario: Create a Cloze question using the tiny_cloze plugin
+  Scenario: Create a Cloze question
     When I am on the "Course 1" "core_question > course question bank" page logged in as teacher
     And I press "Create a new question ..."
     And I set the field "Embedded answers (Cloze)" to "1"
-    And I press "Add"
-    And I pause
+    And I click on "Add" "button" in the "Choose a question type to add" "dialogue"
+    And I click on "Cloze question editor" "button"
+    And I set the field "SHORTANSWER" to "1"
+    And I click on "Select question type" "button"
+    And I should see "Select question type"
